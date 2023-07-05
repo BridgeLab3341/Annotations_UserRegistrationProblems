@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 
 namespace Annotations_UserRegistrationproblems
 {
-    internal class ValidateUserRegistration
+    public class ValidateUserRegistration
     {
-        public static void ValidateData()
+        UserRegistration user = new UserRegistration();
+        public  void ValidateFirstName()
         {
-            UserRegistration user=new UserRegistration();
+            bool flag = true;
+            Console.WriteLine();
             Console.WriteLine("Enter First Name");
             string first=Console.ReadLine();
-            user.First_Name = first;
-            ValidationContext context=new ValidationContext(user,null,null);
+            user.First_Name = first;         
+            ValidationContext context =new ValidationContext(user,null,null);
             List<ValidationResult> results = new List<ValidationResult>();
             bool valid = Validator.TryValidateObject(user, context, results,true);
             if(!valid)
