@@ -10,26 +10,45 @@ namespace Annotations_UserRegistrationproblems
     public class ValidateUserRegistration
     {
         UserRegistration user = new UserRegistration();
-        public  void ValidateFirstName()
+        public void ValidateFirstName()
         {
-            bool flag = true;
-            Console.WriteLine();
             Console.WriteLine("Enter First Name");
-            string first=Console.ReadLine();
-            user.First_Name = first;         
-            ValidationContext context =new ValidationContext(user,null,null);
+            string first = Console.ReadLine();
+            user.First_Name = first;
+            ValidationContext context = new ValidationContext(user, null, null);
             List<ValidationResult> results = new List<ValidationResult>();
-            bool valid = Validator.TryValidateObject(user, context, results,true);
-            if(!valid)
+            bool valid = Validator.TryValidateObject(user, context, results, true);
+            if (!valid)
             {
-                foreach(ValidationResult data in results)
+                foreach (ValidationResult data in results)
                 {
                     Console.WriteLine(data.ErrorMessage);
                 }
             }
             else
             {
-                Console.WriteLine("First Name : "+user.First_Name+ " "+"is Valid");
+                Console.WriteLine("First Name : " + user.First_Name + " " + "is Valid");
+            }
+        }
+        public void ValidateLastName()
+        {
+            ValidateLastName lastName= new ValidateLastName();
+            Console.WriteLine("Enter Last Name");
+            string last = Console.ReadLine();
+            lastName.Last_Name = last;
+            ValidationContext context = new ValidationContext(lastName, null, null);
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool valid = Validator.TryValidateObject(lastName, context, results, true);
+            if (!valid)
+            {
+                foreach (ValidationResult data in results)
+                {
+                    Console.WriteLine(data.ErrorMessage);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Last Name : " + lastName.Last_Name + " " + "is Valid");
             }
         }
     }
