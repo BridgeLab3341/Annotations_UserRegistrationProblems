@@ -177,5 +177,28 @@ namespace Annotations_UserRegistrationproblems
                 Console.WriteLine("Password Rule-4 : " + rule4.Password + " " + "is Valid");
             }
         }
+        public void ValidateAllEmails()
+        {
+            ValidateEmail email = new ValidateEmail();
+            string[] arr = { "abc@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com", "abc111@abc.com", "abc-100@abc.net", " abc.100@abc.com.au", "abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com", "abc@.com.my", "abc123@gmail.a", "abc123@.com", "abc123@.com.com", ".abc@abc.com", "abc()*@gmail.com", "abc..2002@gmail.com", "abc.@gmail.com", "bc@abc@gmail.com", "abc@%*.com", "abc@gmail.com.1a", "abc@gmail.com.aa.au" };
+            foreach(var data in arr)
+            {
+                email.Email = data;
+                ValidationContext context = new ValidationContext(email, null, null);
+                List<ValidationResult> results = new List<ValidationResult>();
+                bool valid = Validator.TryValidateObject(email, context, results, true);
+                if (!valid)
+                {
+                    foreach (ValidationResult item in results)
+                    {
+                        Console.WriteLine(item.ErrorMessage);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Email : " + email.Email + " " + "is Valid");
+                }
+            }
+        }
     }
 }
