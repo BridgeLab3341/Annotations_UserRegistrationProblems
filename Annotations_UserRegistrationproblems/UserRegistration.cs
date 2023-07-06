@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -36,5 +37,13 @@ namespace Annotations_UserRegistrationproblems
         [DataType(DataType.PhoneNumber)]
         [Phone]
         public string Phone { get; set; }
+    }
+    public class ValidatePasswordRule1
+    {
+        [Required(ErrorMessage ="User Deatils {0} is Required")]
+        [StringLength(100, MinimumLength =8,ErrorMessage = "Password Rule 1 Need Minimum 8 Characters")]
+        [RegularExpression("^[A-Z]{8,}$", ErrorMessage = "Password to be Enterd All Captial Letters Minumum 8 Characters")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
     }
 }

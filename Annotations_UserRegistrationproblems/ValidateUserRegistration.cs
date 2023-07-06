@@ -93,5 +93,26 @@ namespace Annotations_UserRegistrationproblems
                 Console.WriteLine("Phone Number : " + number.Phone + " " + "is Valid");
             }
         }
+        public void ValidatePasswordRule1()
+        {
+            ValidatePasswordRule1 rule1 = new ValidatePasswordRule1();
+            Console.WriteLine("Enter Password ");
+            string pass = Console.ReadLine();
+            rule1.Password = pass;
+            ValidationContext context = new ValidationContext(rule1, null, null);
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool valid = Validator.TryValidateObject(rule1, context, results, true);
+            if (!valid)
+            {
+                foreach (ValidationResult data in results)
+                {
+                    Console.WriteLine(data.ErrorMessage);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Password Rule-1 : " + rule1.Password + " " + "is Valid");
+            }
+        }
     }
 }
