@@ -11,7 +11,7 @@ namespace Annotations_UserRegistrationProblems
             bool flag = true;
             while (true)
             {
-                Console.WriteLine("Choose Option To Perform the Operation\n1.First Name\n2.Lats Name\n3.Email\n4.Exit");
+                Console.WriteLine("Choose Option To Perform the Operation\n1.First Name\n2.Lats Name\n3.Email\n4.Phone Number\n5.Exit");
                 int option = Convert.ToInt32(Console.ReadLine());
                 UserRegistration user = new UserRegistration();
                 switch (option)
@@ -25,7 +25,10 @@ namespace Annotations_UserRegistrationProblems
                         case 3:
                             valid.ValidateEmail();
                         break;
-                     case 4:
+                        case 4:
+                        valid.ValidatePhone();
+                        break;
+                     case 5:
                         flag = false;
                         break;
                 }

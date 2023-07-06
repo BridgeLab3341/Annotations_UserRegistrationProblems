@@ -31,4 +31,10 @@ namespace Annotations_UserRegistrationproblems
         [EmailAddress]
         public string Email { get; set; }
     }
+    public class ValidatePhoneNumber
+    {
+        [DataType(DataType.PhoneNumber)]
+        [Phone]
+        public string Phone { get; set; }
+    }
 }

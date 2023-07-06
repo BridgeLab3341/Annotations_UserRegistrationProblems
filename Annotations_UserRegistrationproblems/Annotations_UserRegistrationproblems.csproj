@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Google.Api.CommonProtos" Version="2.10.0" />
+    <PackageReference Include="libphonenumber-csharp" Version="8.13.14" />
+  </ItemGroup>
+
 </Project>

@@ -72,5 +72,26 @@ namespace Annotations_UserRegistrationproblems
                 Console.WriteLine("Email : " + email.Email + " " + "is Valid");
             }
         }
+        public void ValidatePhone()
+        {
+            ValidatePhoneNumber number= new ValidatePhoneNumber();
+            Console.WriteLine("Enter 10 Digits Phone Number");
+            string mobile= Console.ReadLine();
+            number.Phone = mobile;
+            ValidationContext context= new ValidationContext(number, null, null);
+            List<ValidationResult > results= new List<ValidationResult>();
+            bool valid=Validator.TryValidateObject(number, context, results, true);
+            if(!valid)
+            {
+                foreach(ValidationResult data in results)
+                {
+                    Console.WriteLine(data.ErrorMessage);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Phone Number : " + number.Phone + " " + "is Valid");
+            }
+        }
     }
 }
