@@ -58,7 +58,15 @@ namespace Annotations_UserRegistrationproblems
     {
         [Required(ErrorMessage = "User Deatils {0} is Required")]
         [StringLength(100, MinimumLength = 8, ErrorMessage = "Password Rule 3 Need Minimum 8 Characters")]
-        [RegularExpression("^[A-Z]{1,}[a-z]{3,}[0-9]{4,}$", ErrorMessage = "Password Sholud have At Least 1 Upper Case (Minumum 8 Characters)")]
+        [RegularExpression("^[A-Z]{1,}[a-z]{3,}[0-9]{4,}$", ErrorMessage = "Password Sholud have At Least 1 Numeric Number (Minumum 8 Characters)")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+    }
+    public class ValidatePasswordRule4
+    {
+        [Required(ErrorMessage = "User Deatils {0} is Required")]
+        [StringLength(100, MinimumLength = 8, ErrorMessage = "Password Rule 4 Need Minimum 8 Characters")]
+        [RegularExpression("^[A-Za-z0-9]{4,}[@+.+!+#+$+%+^+&+*+?+{+}+`+~]{1,}[a-zA-Z-0-9]{3,}$", ErrorMessage = "Password Sholud have At Least 1 Special Charcter (Minumum 8 Characters)")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }

@@ -156,5 +156,26 @@ namespace Annotations_UserRegistrationproblems
                 Console.WriteLine("Password Rule-3 : " + rule3.Password + " " + "is Valid");
             }
         }
+        public void ValidatePasswordRule4()
+        {
+            ValidatePasswordRule4 rule4 = new ValidatePasswordRule4();
+            Console.WriteLine("Enter Password ");
+            string pass = Console.ReadLine();
+            rule4.Password = pass;
+            ValidationContext context = new ValidationContext(rule4, null, null);
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool valid = Validator.TryValidateObject(rule4, context, results, true);
+            if (!valid)
+            {
+                foreach (ValidationResult data in results)
+                {
+                    Console.WriteLine(data.ErrorMessage);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Password Rule-4 : " + rule4.Password + " " + "is Valid");
+            }
+        }
     }
 }
