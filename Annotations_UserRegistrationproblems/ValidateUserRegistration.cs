@@ -51,5 +51,26 @@ namespace Annotations_UserRegistrationproblems
                 Console.WriteLine("Last Name : " + lastName.Last_Name + " " + "is Valid");
             }
         }
+        public void ValidateEmail()
+        {
+            ValidateEmail email= new ValidateEmail();
+            Console.WriteLine("Enter Email Address");
+            string mail= Console.ReadLine();
+            email.Email = mail;
+            ValidationContext context=new ValidationContext(email, null, null);
+            List<ValidationResult> results= new List<ValidationResult>();
+            bool valid=Validator.TryValidateObject(email, context,results, true);
+            if(!valid)
+            {
+                foreach(ValidationResult data in results)
+                {
+                    Console.WriteLine(data.ErrorMessage);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Email : " + email.Email + " " + "is Valid");
+            }
+        }
     }
 }
