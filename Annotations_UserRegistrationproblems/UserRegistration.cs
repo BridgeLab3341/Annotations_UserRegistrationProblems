@@ -54,4 +54,12 @@ namespace Annotations_UserRegistrationproblems
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }
+    public class ValidatePasswordRule3
+    {
+        [Required(ErrorMessage = "User Deatils {0} is Required")]
+        [StringLength(100, MinimumLength = 8, ErrorMessage = "Password Rule 3 Need Minimum 8 Characters")]
+        [RegularExpression("^[A-Z]{1,}[a-z]{3,}[0-9]{4,}$", ErrorMessage = "Password Sholud have At Least 1 Upper Case (Minumum 8 Characters)")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+    }
 }
